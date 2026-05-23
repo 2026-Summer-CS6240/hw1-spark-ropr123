@@ -2,8 +2,8 @@
 
 # Customize these paths for your environment.
 # -----------------------------------------------------------
-spark.root=/usr/local/spark-3.3.2-bin-without-hadoop
-hadoop.root=/usr/local/hadoop-3.3.5
+spark.root=/opt/spark-3.3.2
+hadoop.root=/opt/hadoop-3.3.5
 app.name=Word Count
 jar.name=spark-demo.jar
 maven.jar.name=spark-demo-1.0.jar
@@ -17,7 +17,7 @@ hdfs.input=input
 hdfs.output=output
 # AWS EMR Execution
 aws.emr.release=emr-6.10.0
-aws.bucket.name=cs6240-demo-bucket
+aws.bucket.name=cs6240-rohit-hw1-spark
 aws.input=input
 aws.output=output
 aws.log.dir=log
@@ -38,7 +38,7 @@ clean-local-output:
 
 # Runs standalone
 local: jar clean-local-output
-	spark-submit --class ${job.name} --master ${local.master} --name "${app.name}" ${jar.name} ${local.input} ${local.output}
+	/opt/spark-3.3.2/bin/spark-submit --class ${job.name} --master ${local.master} --name "${app.name}" ${jar.name} ${local.input} ${local.output}
 
 # Start HDFS
 start-hdfs:
